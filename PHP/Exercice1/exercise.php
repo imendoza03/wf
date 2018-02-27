@@ -1,22 +1,27 @@
 <?php
 
-$booleanTrue;
-$booleanFalse;
+$booleanTrue = TRUE;
+$booleanFalse = FALSE;
 
-$int;
+$int = 128;
 
-$float;
+$float = 2.1;
 
-$integer;
+$integer = 15000000;
 
-$double;
+$double = 150000000000000000000000000000;
 
-$string;
+$string = 'lorem ipsum';
 
-$array;
+$array = ['red', 'blue'];
 
-$doubleDimenssionArray;
+$doubleDimenssionArray = [
+    ['blue', 'green']
+];
 
-$associativeArray;
+$associativeArray = [
+    'color' => 'red',
+    'name' => 'ivan'
+];
 
-$null;
+$null = NULL;
