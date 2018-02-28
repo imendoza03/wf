@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="PHP/Exercice1"/>
+	<buildpathentry kind="src" path="PHP/Exercice2"/>
+	<buildpathentry kind="src" path="PHP/Exercice3"/>
+	<buildpathentry kind="src" path="PHP/Exercice4"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>
