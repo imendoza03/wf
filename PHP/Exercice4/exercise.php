@@ -8,7 +8,8 @@ function getAllMondaysOfMonth(int $year, int $month) : array {
     
     $interval = DateInterval::createFromDateString('next monday');
     
-    while (!in_array($lastMonday->format('l j, M Y'), $mondays)){
+//     while (!in_array($lastMonday->format('l j, M Y'), $mondays)){
+    while ($firstMonday <= $lastMonday){
         $mondays[] = $firstMonday->format('l j, M Y');
         $firstMonday->add($interval);
     }
