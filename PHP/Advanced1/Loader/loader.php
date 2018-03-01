@@ -9,20 +9,19 @@ function downloadData(){
     $newData = [];
     
     foreach ($obj as $data) {
+//         var_dump($data);
+//         die;
         $info = $data['versions'][$data['preferred']]['info'];
         
         if (isset($info['description'])){
-            
             $description = $info['description'];
-            
         }
         
         if (isset($info["title"])){
-            
             $title = $info['title'];
         }
         
-        $name = $data['versions'][$data['preferred']];
+        $name = $data['preferred'];
         $entry = $data['versions'][$data['preferred']]['added'];
         $updated = $data['versions'][$data['preferred']]['updated'];
         
@@ -32,14 +31,11 @@ function downloadData(){
         $allData["entry"]= $entry;
         $allData["updated"]= $updated;
         
-        var_dump($allData);
-        
-        
         $newData[] = $allData;
     }
     
-    var_dump($newData);
-    die;
+//     var_dump($newData);
+//     die;
 
     return $newData;
 }

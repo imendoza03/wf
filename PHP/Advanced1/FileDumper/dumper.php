@@ -4,10 +4,13 @@
 namespace Advanced1\FileDumper;
 
 function fileDumper(array $formattedData){
-    var_dump($formattedData);
-    die;
+
     $path = __DIR__ .'data.csv';
-    $text = implode(';', $formattedData);
-    file_put_contents($path, $text);
+    $resource = fopen($path, 'w+');
+
+    foreach ($formattedData as $data) {
+        fputcsv($resource, $data);
+    }
+    
     echo 'file created';
 }

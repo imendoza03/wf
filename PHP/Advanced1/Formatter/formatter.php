@@ -3,15 +3,14 @@
 namespace Advanced1\Formatter;
 //One function to format the data
 
-function dataFormatter(array $allData){
+function dataFormatter(array $newData): array{
     
-    foreach ($allData as $key => $value){
-        if($key == 'updated'){
-            $newDate = date('d-m-Y H:i:s', strtotime($value));
-            $allData[$key] = $newDate;
-        }
-        
+    foreach ($newData as $key => $element){
+        $newUpdatedDate = date('d-m-Y H:i:s', strtotime($element['updated']));
+        $newEntryDate = date('d-m-Y H:i:s', strtotime($element['entry']));
+        $newData[$key]['updated'] = $newUpdatedDate;
+        $newData[$key]['entry'] = $newEntryDate;
     }
     
-    return $allData;
+    return $newData;
 }
