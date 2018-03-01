@@ -1,37 +1,29 @@
 <?php
 declare(strict_types = 1);
 function divide(int $number, int $divisor) : int{
+
     if ($divisor !== 0) {
         $result = $number/$divisor;
-        return $result; 
+        return $result;
     } else{
         throw new RuntimeException('Division by 0 is not allowed');
     }
     
 }
 
-function arrayDivide(array $values, int $divisor):array{
+function arrayDivide(array $values, int $divisor): array{
     
     try {
+        $newValues = [];
         for ($i= 0; $i < count($values); $i++){
-            $result = divide($values[$i], $divisor);
-            return $result;
+            $newValues[] = divide($values[$i], $divisor);
         }
-        
-        
+        return $newValues;
     } catch (RuntimeException $e) {
-        echo 'jaja';
+        echo $e->getMessage();
         return $values;
     }
     
-//     var_dump($result);
-    
 }
 
-try {
-    divide(2,0);
-} catch (RuntimeException $e) {
-    echo $e->getMessage();
-}
-
-arrayDivide([1,2,3], 0);
+arrayDivide([2,4,6], 0);
