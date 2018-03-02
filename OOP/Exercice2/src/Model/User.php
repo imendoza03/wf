@@ -9,6 +9,10 @@ class User
     protected $salt;
     protected $username;
     
+    public function addRole($role){
+        $rolesp[] = $role;
+    }
+    
     public function getId()
     {
         return $this->id;
@@ -16,7 +20,11 @@ class User
 
     public function getRoles()
     {
-        return $this->roles;
+        $labels = [Role::ROLE_USER];
+        foreach($this-roles as $role){
+            $labels[] = $role->getLabel(); 
+        }
+        return $labels;
     }
 
     public function getPassword()
@@ -36,7 +44,12 @@ class User
 
     public function setRoles($roles)
     {
-        $this->roles = $roles;
+        foreach ($roles as $role){
+            if(!in_array($role, $this->roles)) {
+                $this->roles [] = $role;
+            }
+        }
+        
         return $this;
     }
 
