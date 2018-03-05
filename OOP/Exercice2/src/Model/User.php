@@ -44,13 +44,14 @@ class User
 
     public function setRoles($roles)
     {
+        $listOfRoles = [];
         foreach ($roles as $role){
             if(!in_array($role, $this->roles)) {
-                $this->roles [] = $role;
+                $listOfRoles = $role;
             }
         }
         
-        return $this;
+        return $listOfRoles;
     }
 
     public function setPassword($password)
