@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-class User
+class User implements UserInterface
 {
     private $id;
     protected $roles = [];
@@ -58,12 +58,6 @@ class User
         return $this;
     }
 
-    public function setPassword($password)
-    {
-        $this->password = $password;
-        return $this;
-    }
-
     public function setSalt($salt)
     {
         $this->salt = $salt;
@@ -81,10 +75,16 @@ class User
         $this->password = null;
         $this->salt = null;
     }
-    
+  
     protected function roleToLabel(Role $role)
     {
         return $role->getLabel();
+    }
+    
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
     }
 }
 
