@@ -1,19 +1,25 @@
 {
-    "name": "etudiant/exercice4",
-    "description": "My app",
-    "type": "library",
-    "require": {
-        "symfony/security": "^4.0"
-    },
-    "require-dev": {
-        "symfony/security": "^4.0"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "imendoza03",
-            "email": "ivanmendoza@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev"
+	"name" : "etudiant/exercice4",
+	"description" : "My app",
+	"type" : "library",
+	"require" : {
+		"symfony/security" : "^4.0"
+	},
+	"require-dev" : {
+		"symfony/security" : "^4.0"
+	},
+	"license" : "MIT",
+	"authors" : [{
+			"name" : "imendoza03",
+			"email" : "ivanmendoza@gmail.com"
+		}
+	],
+	"minimum-stability" : "dev",
+	"autoload" : {
+		"psr-4" : {
+			"":"",
+			"Model\\" : "Model/",
+			"Exception\\" : "Exception/"
+		}
+	}
 }
