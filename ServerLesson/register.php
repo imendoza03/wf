@@ -16,13 +16,30 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $passwordHasError = !($password == $confirmationPassword && strlen($password > 7));
   $phoneHasError = !(is_numeric($phone) && strlen($phone) == 12 && preg_match("/^[+]/", $phone));
 
-      if(!($userNameHasError || $passwordHasError || $phoneHasError)){
-          $connection = new PDO("mysql:host=localhost;dbname=register", 'root');
-          echo "Data validated";
-          return;
-      }
+  if(!($userNameHasError && $passwordHasError && $phoneHasError)){
+    try{
+      $connection = new PDO("mysql:host=localhost;dbname=register", 'root');
+    } catch (PDOException $exception){
+      http_response_code(500);
+      echo 'A problem occured, contact support - ' . $exception->getMessage();
+      exit(10);
+    }
 
-      echo 'If validation fail';
+    echo 'Data validated';
+    echo "<h3 style='color:blue'>Succesfully connected to the DB</h3>";
+
+    $sql = "INSERT INTO user(username, password) VALUES(:username, :password)";
+
+    $query = $connection->prepare($sql);
+    $query->execute([
+      "username" => $username,
+      "password" => $password
+    ]);
+    
+    return;
+  }
+
+  echo 'If validation fail';
 }
 ?>
 
