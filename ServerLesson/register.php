@@ -16,11 +16,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
   $passwordHasError = !($password == $confirmationPassword && strlen($password > 7));
   $phoneHasError = !(is_numeric($phone) && strlen($phone) == 12 && preg_match("/^[+]/", $phone));
 
-  //     if(!($userNameHasError || $passwordHasError)){
-  //         echo "Data validated";
-  //     }
+      if(!($userNameHasError || $passwordHasError || $phoneHasError)){
+          $connection = new PDO("mysql:host=localhost;dbname=register", 'root');
+          echo "Data validated";
+          return;
+      }
 
-  //     echo 'If validation fail';
+      echo 'If validation fail';
 }
 ?>
 
